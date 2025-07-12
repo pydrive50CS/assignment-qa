@@ -8,12 +8,11 @@ import java.util.List;
 
 public class LoginPage extends BasePage {
 
-    private By usernameField = By.id("user-name");
-    private By passwordField = By.id("password");
-    private By loginButton = By.id("login-button");
-    private By errorMessage = By.cssSelector("#login_button_container h3");
-    private By loginDetailsContainer = By.id("login_credentials");
-    private By passwordContainer = By.xpath("//div[@class='login_password']");
+    final private By usernameField = By.id("user-name");
+    final private By passwordField = By.id("password");
+    final private By loginButton = By.id("login-button");
+    final private By loginDetailsContainer = By.id("login_credentials");
+    final private By passwordContainer = By.xpath("//div[@class='login_password']");
     public void setUsername(String username) {
         set(usernameField, username);
     }
@@ -26,15 +25,8 @@ public class LoginPage extends BasePage {
         click(loginButton);
     }
 
-    public String getErrorMessage() {
-        return find(errorMessage).getText();
-    }
     public boolean isLoginSuccessful() {
         return driver.getCurrentUrl().contains("inventory");
-    }
-
-    public boolean isErrorDisplayed() {
-        return find(errorMessage).getText().contains("Epic sadface:");
     }
 
     public List<String> extractUsernames() {

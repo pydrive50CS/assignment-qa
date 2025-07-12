@@ -5,6 +5,7 @@ import com.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import utilities.ConfigReader;
 import utilities.DBUtility;
 import utilities.ExtentReportManager;
 import utilities.ScreenshotUtility;
@@ -36,7 +37,7 @@ public class LoginTest extends BaseTest {
 
         try {
             test.info("Navigating to login page");
-            driver.get("https://www.saucedemo.com/");
+            driver.get(ConfigReader.get("baseUrl"));
 
             test.info("Entering username: '" + username + "'");
             loginPage.setUsername(username);

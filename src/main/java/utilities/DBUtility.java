@@ -7,7 +7,7 @@ import java.util.List;
 public class DBUtility {
 
     public static Connection getConnection() throws Exception {
-        String url = System.getenv("DB_URL");
+        String url = ConfigReader.get("db_url");
         String user = System.getenv("DB_USERNAME");
         String password = System.getenv("DB_PASSWORD");
         return DriverManager.getConnection(url, user, password);

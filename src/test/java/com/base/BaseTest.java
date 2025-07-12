@@ -6,6 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import utilities.ConfigReader;
+import utilities.DriverFactory;
 import utilities.ExtentReportManager;
 
 import java.lang.reflect.Method;
@@ -15,15 +17,16 @@ import static utilities.Utilities.setUtilityDriver;
 public class BaseTest {
 
     protected WebDriver driver;
-    final private String url = "https://www.saucedemo.com";
     protected BasePage basePage;
     protected LoginPage loginPage;
+    String browser = ConfigReader.get("browser");
+    String url = ConfigReader.get("baseUrl");
+
 
     @BeforeClass
     public void setUp() {
         ExtentReportManager.initReports(getReportName(), getDocumentTitle());
-
-        driver = new FirefoxDriver();
+        driver = DriverFactory.createDriver(browser);
         driver.manage().window().maximize();
         driver.get(url);
         basePage = new BasePage();
