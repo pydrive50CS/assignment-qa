@@ -31,7 +31,8 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginDataFromDB")
-    public void testLoginFunction(String testCaseName, String username, String password, boolean expectedResult) {
+    public void testLoginFunction( String testCaseCode, String testCaseName, String username, String password, boolean expectedResult) {
+        ExtentReportManager.createTest(testCaseCode + " : " + testCaseName);
         ExtentTest test = ExtentReportManager.getTest();
         test.info("Test Case: " + testCaseName);
 

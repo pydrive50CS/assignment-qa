@@ -17,14 +17,15 @@ public class DBUtility {
         List<Object[]> data = new ArrayList<>();
         try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT test_case_name, username, password, expected_result FROM users")) {
+             ResultSet rs = stmt.executeQuery("SELECT test_case_code, test_case_name, username, password, expected_result FROM users")) {
 
             while (rs.next()) {
+                String testCode = rs.getString("test_case_code");
                 String testCaseName = rs.getString("test_case_name");
                 String user = rs.getString("username");
                 String pass = rs.getString("password");
                 boolean result = rs.getBoolean("expected_result");
-                data.add(new Object[]{testCaseName, user, pass, result});
+                data.add(new Object[]{testCode, testCaseName, user, pass, result});
             }
         }
         return data;

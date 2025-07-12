@@ -37,7 +37,7 @@ public class BaseTest {
 
    @BeforeMethod
    public void beforeMethod(Method method) {
-       ExtentReportManager.createTest(method.getName());
+//       ExtentReportManager.createTest(method.getName());
    }
     @AfterClass
     public void tearDown() {
