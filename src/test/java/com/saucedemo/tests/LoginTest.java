@@ -3,6 +3,7 @@ package com.saucedemo.tests;
 import annotations.TestModule;
 import com.aventstack.extentreports.ExtentTest;
 import com.base.BaseTest;
+import org.apache.commons.text.StringEscapeUtils;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -16,6 +17,7 @@ import java.util.List;
 @TestModule("Login")
 public class LoginTest extends BaseTest {
     ScreenshotUtility screenshotUtility = new ScreenshotUtility();
+
     @Override
     protected String getReportName() {
         return "SauceDemo Login Tests";
@@ -33,7 +35,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "loginDataFromDB")
-    public void testLoginFunction( String testCaseCode, String testCaseName, String username, String password, boolean expectedResult) {
+    public void testLoginFunction(String testCaseCode, String testCaseName, String username, String password, boolean expectedResult) {
         ExtentReportManager.createTest(testCaseCode + " : " + testCaseName);
         ExtentTest test = ExtentReportManager.getTest();
         test.info("Test Case: " + testCaseName);
@@ -43,7 +45,12 @@ public class LoginTest extends BaseTest {
             test.info("Navigating to login page");
             driver.get(url);
 
-            test.info("Entering username: '" + username + "'");
+            if (testCaseName.contains("XSS")) {
+                test.info("Entering username: '" + StringEscapeUtils.escapeHtml4(username) + "'");
+            } else {
+                test.info("Entering username: '" + username + "'");
+            }
+
             loginPage.setUsername(username);
 
             test.info("Entering password: '" + password + "'");
@@ -69,8 +76,7 @@ public class LoginTest extends BaseTest {
                 }
                 Assert.fail("Login test failed.");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             ExtentReportManager.logFail("Test crashed: " + e.getMessage());
 
             String screenshotPath = screenshotUtility.captureScreenshot(testCaseName + "_" + username);
