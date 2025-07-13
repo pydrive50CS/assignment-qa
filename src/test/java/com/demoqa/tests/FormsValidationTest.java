@@ -127,7 +127,7 @@ public class FormsValidationTest extends BaseTest {
             }
             if (mobile == null || mobile.trim().isEmpty()) {
                 verifyValidationMessage("mobile", formsPage.getValidationMessage("mobile"), "Please fill out this field.");
-            }ad
+            }
         }
 
         if (validationFailed) {
