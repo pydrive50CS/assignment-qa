@@ -30,5 +30,25 @@ public class DBUtility {
         }
         return data;
     }
+
+    public static List<Object[]> getRequiredFieldTestData() throws Exception {
+        List<Object[]> data = new ArrayList<>();
+        try (Connection conn = getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT test_case_code, description, first_name, last_name, mobile, gender, expect_error FROM form_test_cases")) {
+
+            while (rs.next()) {
+                String testCode = rs.getString("test_case_code");
+                String description = rs.getString("description");
+                String first_name = rs.getString("first_name");
+                String last_name = rs.getString("last_name");
+                String mobile = rs.getString("mobile");
+                String gender = rs.getString("gender");
+                boolean expect_error = rs.getBoolean("expect_error");
+                data.add(new Object[]{testCode, description, first_name, last_name, mobile, gender, expect_error});
+            }
+        }
+        return data;
+    }
 }
 

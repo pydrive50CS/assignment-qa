@@ -8,8 +8,9 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static utilities.JavaScriptUtility.highlightElement;
 
-public class ScreenshotUtility extends Utilities{
+public class ScreenshotUtility extends Utilities {
 
     public String captureScreenshot(String testName) {
         try {
@@ -22,22 +23,19 @@ public class ScreenshotUtility extends Utilities{
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-
             TakesScreenshot ts = (TakesScreenshot) driver;
             File src = ts.getScreenshotAs(OutputType.FILE);
 
-            // Full path for saving the screenshot
             File dest = new File(screenshotDir + screenshotFile);
             FileUtils.copyFile(src, dest);
 
-            // Return relative path for ExtentReport compatibility as abs path did not load during the report locally
-            return "screenshots/" + screenshotFile;
+            // Path returned should be relative to where ExtentReport is generated (usually /reports/)
+            return "../screenshots/" + screenshotFile;
+
 
         } catch (Exception e) {
             System.out.println("Screenshot capture failed: " + e.getMessage());
             return null;
         }
     }
-
-
 }

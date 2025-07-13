@@ -13,12 +13,15 @@ public class ExtentReportManager{
     private static ExtentReports extent;
     private static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
 
-    public static void initReports(String reportName, String documentTitle) {
+    public static void initReports(String reportName, String documentTitle, String moduleName) {
         if (extent == null) {
             new File("reports").mkdirs();
 
             String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String reportPath = "reports/ExtentReport_" + timestamp + ".html";
+            String dirPath = "reports/" + moduleName.toLowerCase();
+            new File(dirPath).mkdirs();
+
+            String reportPath = dirPath + "/ExtentReport_" + timestamp + ".html";
 
             ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
             spark.config().setReportName(reportName);

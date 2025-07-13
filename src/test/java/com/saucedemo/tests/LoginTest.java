@@ -1,5 +1,6 @@
 package com.saucedemo.tests;
 
+import annotations.TestModule;
 import com.aventstack.extentreports.ExtentTest;
 import com.base.BaseTest;
 import org.testng.Assert;
@@ -12,6 +13,7 @@ import utilities.ScreenshotUtility;
 
 import java.util.List;
 
+@TestModule("Login")
 public class LoginTest extends BaseTest {
     ScreenshotUtility screenshotUtility = new ScreenshotUtility();
     @Override
@@ -44,13 +46,10 @@ public class LoginTest extends BaseTest {
             loginPage.setUsername(username);
 
             test.info("Entering password: '" + password + "'");
-
-            //test for screenshot working during exception
-            /* if (username.equals("problem_user")) {
+            /*if (username.equals("problem_user")) {
                 throw new RuntimeException("Simulated crash while entering password");
             }*/
-
-            loginPage.setPassword(password);  // ← if this crashes, we catch it below
+            loginPage.setPassword(password);
 
             test.info("Clicking Login button");
             loginPage.clickLoginButton();
@@ -59,19 +58,25 @@ public class LoginTest extends BaseTest {
             test.info("Expected result: " + expectedResult);
             test.info("Actual result: " + actualResult);
 
-            Assert.assertEquals(actualResult, expectedResult, "Login test failed");
-            ExtentReportManager.logPass("Login test passed");
-
+            if (actualResult == expectedResult) {
+                ExtentReportManager.logPass("Login test passed");
+            } else {
+                ExtentReportManager.logFail("Login test failed. Expected: " + expectedResult + ", but got: " + actualResult);
+                String screenshotPath = screenshotUtility.captureScreenshot(testCaseName + "_" + username);
+                if (screenshotPath != null) {
+                    test.fail("Failure screenshot:").addScreenCaptureFromPath(screenshotPath);
+                }
+                Assert.fail("Login test failed.");
+            }
         }
         catch (Exception e) {
             ExtentReportManager.logFail("Test crashed: " + e.getMessage());
 
-            String screenshotPath = screenshotUtility.captureScreenshot(testCaseName);
+            String screenshotPath = screenshotUtility.captureScreenshot(testCaseName + "_" + username);
             if (screenshotPath != null) {
-                test.addScreenCaptureFromPath(screenshotPath);
+                test.fail("Crash Screenshot:").addScreenCaptureFromPath(screenshotPath);
             }
             throw e;
         }
-
     }
 }
