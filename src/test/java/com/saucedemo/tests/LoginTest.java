@@ -37,10 +37,11 @@ public class LoginTest extends BaseTest {
         ExtentReportManager.createTest(testCaseCode + " : " + testCaseName);
         ExtentTest test = ExtentReportManager.getTest();
         test.info("Test Case: " + testCaseName);
+        String url = ConfigReader.get("login_url");
 
         try {
             test.info("Navigating to login page");
-            driver.get(ConfigReader.get("baseUrl"));
+            driver.get(url);
 
             test.info("Entering username: '" + username + "'");
             loginPage.setUsername(username);

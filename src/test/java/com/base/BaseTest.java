@@ -11,27 +11,26 @@ import utilities.DriverFactory;
 import utilities.ExtentReportManager;
 import utilities.ReportDirectoryUtility;
 
+import java.io.InputStream;
 import java.lang.reflect.Method;
 
 import static utilities.Utilities.setUtilityDriver;
 
 public class BaseTest {
     String browser = ConfigReader.get("browser");
-    String url = ConfigReader.get("baseUrl");
+    String url = "";
     protected LoginPage loginPage;
     protected WebDriver driver;
     protected BasePage basePage;
     protected FormsPage formsPage;
 
-
     @BeforeClass
     public void setUp() {
         String[] titles = ReportDirectoryUtility.getReportTitles(this.getClass());
         ExtentReportManager.initReports(titles[0], titles[1], titles[2]);
-//      ExtentReportManager.initReports(getReportName(), getDocumentTitle());
         driver = DriverFactory.createDriver(browser);
         driver.manage().window().maximize();
-        driver.get(url);
+//        driver.get(url);
         basePage = new BasePage();
         basePage.setDriver(driver);
         setUtilityDriver();

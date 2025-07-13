@@ -75,9 +75,9 @@ public class FormsValidationTest extends BaseTest {
 
         ExtentReportManager.createTest(testCaseCode + " : " + testCaseName);
         ExtentTest test = ExtentReportManager.getTest();
-
-        driver.get("https://demoqa.com/automation-practice-form");
-        test.info("Loaded forms page");
+        String url = ConfigReader.get("form_url");
+        test.info("Navigating to forms page");
+        driver.get(url);
 
         if (firstName != null) {
             formsPage.enterFirstName(firstName);
