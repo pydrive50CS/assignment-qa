@@ -38,13 +38,13 @@ public class FormsValidationTest extends BaseTest {
             highlightElement(formsPage.getLocatorByFieldName(fieldName));
             String screenshotPath = screenshotUtility.captureScreenshot(fieldName + "_valFail");
             if (screenshotPath != null) test.fail("Screenshot:").addScreenCaptureFromPath(screenshotPath);
-            Assert.fail("Mismatch validation message for " + fieldName);
+            Assert.fail("Failure in Field: " + fieldName);
         }
     }
 
     private ValidationResult validateInput(String fieldName, String input, int maxLength, String fieldLocatorKey) {
         ValidationResult result = new ValidationResult();
-
+        ExtentTest test = ExtentReportManager.getTest();
         ValidationResult sanitization = InputValidatorsUtility.validateSanitization(fieldName, input, maxLength);
         ValidationResult security = InputValidatorsUtility.validateSecurity(fieldName, input);
         result.merge(sanitization);
@@ -55,7 +55,7 @@ public class FormsValidationTest extends BaseTest {
             highlightElement(formsPage.getLocatorByFieldName(fieldLocatorKey));
             String screenshotPath = screenshotUtility.captureScreenshot(fieldName.replace(" ", "") + "_ValidationFail");
             if (screenshotPath != null)
-                ExtentReportManager.getTest().fail("Screenshot:").addScreenCaptureFromPath(screenshotPath);
+                test.fail("Screenshot:").addScreenCaptureFromPath(screenshotPath);
         }
 
         return result;
@@ -68,7 +68,7 @@ public class FormsValidationTest extends BaseTest {
     }
 
     @Test(dataProvider = "dbFormTests", priority = 1)
-    public void testFormCombinationsFromDB(String testCaseCode, String testCaseName,
+    public void testRequiredFieldValidation(String testCaseCode, String testCaseName,
                                            String firstName, String lastName,
                                            String mobile, String gender,
                                            boolean expectError) {
@@ -79,10 +79,9 @@ public class FormsValidationTest extends BaseTest {
         driver.get("https://demoqa.com/automation-practice-form");
         test.info("Loaded forms page");
 
-        // === Enter Inputs ===
         if (firstName != null) {
             formsPage.enterFirstName(firstName);
-            test.info("Entered first name: " + firstName);
+            test.info("Entered first name"/* + firstName.substring(0, 20)*/);
         }
         if (lastName != null) {
             formsPage.enterLastName(lastName);
@@ -97,13 +96,13 @@ public class FormsValidationTest extends BaseTest {
             test.info("Selected gender: " + gender);
         }
 
-        formsPage.submitForm();
-        test.info("Submitted form");
-
         ValidationResult mergedValidationResult = new ValidationResult();
         mergedValidationResult.merge(validateInput("First Name", firstName, 50, "firstName"));
         mergedValidationResult.merge(validateInput("Last Name", lastName, 50, "lastName"));
         mergedValidationResult.merge(validateInput("Mobile", mobile, 10, "mobile"));
+
+        formsPage.submitForm();
+        test.info("Submitted form");
 
         boolean errorShown = formsPage.hasValidationError();
         test.info("Error displayed: " + errorShown);
@@ -116,7 +115,7 @@ public class FormsValidationTest extends BaseTest {
             validationFailed = true;
             ExtentReportManager.logFail("Unexpected validation error shown.");
         } else {
-            ExtentReportManager.logPass("Validation error presence matched expectation.");
+            ExtentReportManager.logPass("Validation error presence matched expectation: " + expectError + " - " + errorShown);
         }
 
         if (expectError) {
@@ -128,7 +127,7 @@ public class FormsValidationTest extends BaseTest {
             }
             if (mobile == null || mobile.trim().isEmpty()) {
                 verifyValidationMessage("mobile", formsPage.getValidationMessage("mobile"), "Please fill out this field.");
-            }
+            }ad
         }
 
         if (validationFailed) {
