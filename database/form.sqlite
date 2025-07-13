@@ -1,0 +1,34 @@
+DROP TABLE IF EXISTS form_test_cases;
+
+CREATE TABLE form_test_cases (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    test_case_code TEXT NOT NULL,
+    description TEXT NOT NULL,
+    first_name TEXT,
+    last_name TEXT,
+    mobile TEXT,
+    gender TEXT,
+    expect_error INTEGER
+);
+
+INSERT INTO form_test_cases
+(test_case_code, description, first_name, last_name, mobile, gender, expect_error) VALUES
+('TC01', 'All fields empty', NULL, NULL, NULL, 'Male', 1),
+('TC02', 'Only first name provided', 'John', NULL, NULL, 'Male', 1),
+('TC03', 'Only last name provided', NULL, 'Shrestha', NULL, 'Male', 1),
+('TC04', 'Only mobile number provided', NULL, NULL, '9876543210', 'Male', 1),
+('TC05', 'First name and last name provided, no mobile', 'Iron', 'Shrestha', NULL, 'Male', 1),
+('TC06', 'First name and mobile provided, no last name', 'Silver', NULL, '9876543210', 'Male', 1),
+('TC07', 'Last name and mobile provided, no first name', NULL, 'Rai', '9876543210', 'Male', 1),
+('TC08', 'All required fields provided correctly', 'Elle', 'Musk', '9876543210', 'Male', 0),
+('TC09', 'First name has spaces only', '   ', 'Gates', '9876543210', 'Male', 1),
+('TC10', 'First name has script injection', '<script>', 'Test', '9876543210', 'Male', 1),
+('TC11', 'Last name has image error injection', 'Rock', '<img onerror>', '9876543210', 'Male', 1),
+('TC12', 'Mobile has SQL injection attempt', '''; OR 1=1--', 'King', '1234abcd', 'Male', 1),
+('TC13', 'Special characters in first and last name', '!@#$', '%^&*', '()_+', 'Male', 1),
+('TC14', 'First name exceeds max length', 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', 'Thapa', '9876543210', 'Male', 1),
+('TC15', 'First and last names with leading/trailing spaces', ' Test ', ' Lint ', ' 9876543210 ', 'Male', 0),
+('TC16', 'Special characters in last name', 'Jim', '!@#$', '9876543210', 'Male', 1),
+('TC17', 'Mobile number too short', 'Hari', 'Ram', '12345', 'Male', 1),
+('TC18', 'Mobile number contains alphabets', 'Geralt', 'Rivea', '9876AB3210', 'Male', 1),
+('TC19', 'Gender field empty', 'The', 'Witcher', '9876543210', NULL, 0);

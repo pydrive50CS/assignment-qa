@@ -1,0 +1,30 @@
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    test_case_code TEXT NOT NULL,
+    test_case_name TEXT NOT NULL,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    expected_result INTEGER NOT NULL
+);
+
+INSERT INTO users (test_case_code, test_case_name, username, password, expected_result) VALUES
+('TC01','Valid user', 'standard_user', 'secret_sauce', 1),
+('TC02','Locked out user', 'locked_out_user', 'secret_sauce', 0),
+('TC03','Problem user valid login', 'problem_user', 'secret_sauce', 1),
+('TC04','Performance glitch user valid login', 'performance_glitch_user', 'secret_sauce', 1),
+('TC05','Invalid user', 'invalid_user', 'secret_sauce', 0),
+('TC06','Wrong password', 'standard_user', 'wrong_password', 0),
+('TC07','Empty username', '', 'secret_sauce', 0),
+('TC08','Empty password', 'standard_user', '', 0),
+('TC09','Both fields empty', '', '', 0),
+('TC10','SQL Injection username', ''' OR 1=1--', 'any', 0),
+('TC11','SQL Injection password', 'standard_user', ''' OR ''1''=''1', 0),
+('TC12','Special characters', 'special!@#$', 'pa$$word!@#', 0),
+('TC13','Long username (50 chars)', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'secret_sauce', 0),
+('TC14','XSS input', '<script>alert(1)</script>', 'test', 0),
+('TC15','Username with whitespace', ' standard_user ', 'secret_sauce', 0),
+('TC16','Password with whitespace', 'standard_user', ' secret_sauce ', 0),
+('TC17','Username all spaces', '    ', 'secret_sauce', 0),
+('TC18','Password all spaces', 'standard_user', '   ', 0);
