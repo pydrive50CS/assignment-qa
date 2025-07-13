@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DBUtility {
 
-    private static final String DB_URL = "jdbc:sqlite:src/test/resources/testdb.sqlite";
+    private static final String DB_URL =ConfigReader.get("db_url");
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(DB_URL);

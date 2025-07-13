@@ -7,5 +7,5 @@ first initialize the database
 then set the environment variables and use envfile plugin to load the variables or run in terminal with
 ```DB_USERNAME=<username> DB_PASSWORD=<yourpassword> mvn test```
 the reports will be generated in the reports folder
-
+#sqlite3 ./database/testdb.sqlite < ./database/login.sqlite
 documentation and work approach in the /docx/assignment1.odt
