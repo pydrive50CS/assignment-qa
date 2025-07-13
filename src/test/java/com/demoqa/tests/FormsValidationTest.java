@@ -50,11 +50,6 @@ public class FormsValidationTest extends BaseTest {
         result.merge(sanitization);
         result.merge(security);
 
-       /* if (fieldLocatorKey.equals("mobile")) {
-            if (input != null && !input.matches("^\\d*$")) {
-                result.addFailure(fieldName + " must contain only digits");
-            }
-        }*/
         if (result.hasFailures()) {
             ExtentReportManager.logFail(fieldName + " validation failures: " + result);
             highlightElement(formsPage.getLocatorByFieldName(fieldLocatorKey));
@@ -87,19 +82,19 @@ public class FormsValidationTest extends BaseTest {
         // === Enter Inputs ===
         if (firstName != null) {
             formsPage.enterFirstName(firstName);
-            test.info("Entered first name");
+            test.info("Entered first name: " + firstName);
         }
         if (lastName != null) {
             formsPage.enterLastName(lastName);
-            test.info("Entered last name");
+            test.info("Entered last name: " + lastName);
         }
         if (mobile != null) {
             formsPage.enterMobile(mobile);
-            test.info("Entered mobile");
+            test.info("Entered mobile: " + mobile);
         }
         if (gender != null && !gender.isEmpty()) {
             formsPage.selectGenderMale();
-            test.info("Selected gender");
+            test.info("Selected gender: " + gender);
         }
 
         formsPage.submitForm();
@@ -109,7 +104,6 @@ public class FormsValidationTest extends BaseTest {
         mergedValidationResult.merge(validateInput("First Name", firstName, 50, "firstName"));
         mergedValidationResult.merge(validateInput("Last Name", lastName, 50, "lastName"));
         mergedValidationResult.merge(validateInput("Mobile", mobile, 10, "mobile"));
-
 
         boolean errorShown = formsPage.hasValidationError();
         test.info("Error displayed: " + errorShown);
