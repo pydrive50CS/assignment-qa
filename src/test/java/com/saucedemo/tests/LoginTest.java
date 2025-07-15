@@ -3,7 +3,6 @@ package com.saucedemo.tests;
 import annotations.TestModule;
 import com.aventstack.extentreports.ExtentTest;
 import com.base.BaseTest;
-import org.apache.commons.text.StringEscapeUtils;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
