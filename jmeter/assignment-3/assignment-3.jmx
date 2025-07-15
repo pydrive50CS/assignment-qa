@@ -6,7 +6,6 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="V1 Thread Group">
@@ -20,7 +19,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults">
           <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.port">443</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
@@ -30,7 +29,7 @@
           <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
         </ConfigTestElement>
         <hashTree/>
-        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
           <collectionProp name="HeaderManager.headers">
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Content-Type</stringProp>
@@ -82,12 +81,12 @@
             <stringProp name="JSONPostProcessor.defaultValues">Error</stringProp>
           </JSONPostProcessor>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/auth-response-schema.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 GET All Created Game">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 GET All Created Game" enabled="true">
           <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/videogame</stringProp>
@@ -128,12 +127,12 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/getall.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 Get Game By ID">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 Get Game By ID" enabled="true">
           <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/videogame/${gameId}</stringProp>
@@ -165,7 +164,7 @@
             <boolProp name="ISREGEX">true</boolProp>
           </JSONPathAssertion>
           <hashTree/>
-          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Authorization</stringProp>
@@ -174,12 +173,12 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/put-post-get-id.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 POST Game">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 POST Game" enabled="true">
           <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/videogame</stringProp>
@@ -239,12 +238,12 @@
             <stringProp name="JSONPostProcessor.defaultValues">Error</stringProp>
           </JSONPostProcessor>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/put-post-get-id.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 PUT Game">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 PUT Game" enabled="true">
           <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/videogame/${gameId}</stringProp>
@@ -304,7 +303,7 @@
             <boolProp name="ISREGEX">true</boolProp>
           </JSONPathAssertion>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/put-post-get-id.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
@@ -992,7 +991,7 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 DELETE XML" enabled="true">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V1 DELETE XML">
             <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/videogame/${gameId}</stringProp>
@@ -1005,7 +1004,7 @@
             </elementProp>
           </HTTPSamplerProxy>
           <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion">
               <collectionProp name="Asserion.test_strings">
                 <stringProp name="51514">406</stringProp>
               </collectionProp>
@@ -1015,7 +1014,7 @@
               <intProp name="Assertion.test_type">8</intProp>
             </ResponseAssertion>
             <hashTree/>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Authorization</stringProp>
@@ -1031,7 +1030,7 @@
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="V2 Thread Group">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="V2 Thread Group" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -1104,13 +1103,13 @@
             <stringProp name="JSONPostProcessor.defaultValues">Error</stringProp>
           </JSONPostProcessor>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/auth-response-schema.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 GET All JSON">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1150,13 +1149,13 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/getall.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 GET All XML">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1195,7 +1194,7 @@
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Get Game By ID">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1235,13 +1234,13 @@
             </collectionProp>
           </HeaderManager>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/put-post-get-id.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Get Game By ID XML" enabled="true">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Get Game By ID XML">
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1280,7 +1279,7 @@
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 POST Game">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1332,13 +1331,13 @@
             <boolProp name="ISREGEX">true</boolProp>
           </JSONPathAssertion>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/put-post-get-id.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 POST Game XML" enabled="true">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 POST Game XML">
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1389,7 +1388,7 @@
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 PUT Game">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1448,13 +1447,13 @@
             <boolProp name="ISREGEX">true</boolProp>
           </JSONPathAssertion>
           <hashTree/>
-          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion">
+          <org.apache.jmeter.assertions.JSONSchemaAssertion guiclass="org.apache.jmeter.assertions.gui.JSONSchemaAssertionGui" testclass="org.apache.jmeter.assertions.JSONSchemaAssertion" testname="JSON Schema Assertion" enabled="true">
             <stringProp name="jsonschema_assertion_filename">${schemaPath}/put-post-get-id.json</stringProp>
           </org.apache.jmeter.assertions.JSONSchemaAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 PUT Game XML" enabled="true">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 PUT Game XML">
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1504,8 +1503,8 @@
           <XMLAssertion guiclass="XMLAssertionGui" testclass="XMLAssertion" testname="XML Assertion" enabled="true"/>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE Game" enabled="true">
-          <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE Game">
+          <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
           <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
@@ -1557,8 +1556,8 @@
         </hashTree>
         <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Negative Test Controller" enabled="true"/>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 GET All No Auth" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 GET All No Auth">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1599,8 +1598,8 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Get Game No Auth" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Get Game No Auth">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1632,8 +1631,8 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Get Game Invalid ID" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Get Game Invalid ID">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/20</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1674,8 +1673,8 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 POST No Auth" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 POST No Auth">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1719,8 +1718,8 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 POST Invalid Body" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 POST Invalid Body">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1772,8 +1771,8 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 PUT Game No Auth" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 PUT Game No Auth">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1817,8 +1816,8 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 PUT Game Invalid Body" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 PUT Game Invalid Body">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1870,8 +1869,8 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Invalid PUT ID" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 Invalid PUT ID">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/20</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1924,8 +1923,8 @@
             </JSONPathAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE No Auth" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE No Auth">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -1971,8 +1970,8 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE Invalid Body" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE Invalid Body">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/${gameId}</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2030,8 +2029,8 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE Invalid ID" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE Invalid ID">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/20</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2067,8 +2066,8 @@
             </HeaderManager>
             <hashTree/>
           </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE Invalid Accept Type" enabled="true">
-            <stringProp name="HTTPSampler.domain">${baseUrlV2}</stringProp>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="V2 DELETE Invalid Accept Type">
+            <stringProp name="HTTPSampler.domain">${baseUrl}</stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.path">/api/v2/videogame/20</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
@@ -2123,11 +2122,6 @@
             <stringProp name="Argument.value">1</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="baseUrlV2" elementType="Argument">
-            <stringProp name="Argument.name">baseUrlV2</stringProp>
-            <stringProp name="Argument.value">www.videogamedb.uk</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="schemaPath" elementType="Argument">
             <stringProp name="Argument.name">schemaPath</stringProp>
             <stringProp name="Argument.value">/home/en1gma/Documents/VSCode/qa/assignment-qa/jmeter/assignment-3/schema</stringProp>
@@ -2136,7 +2130,7 @@
         </collectionProp>
       </Arguments>
       <hashTree/>
-      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -2173,7 +2167,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
