@@ -7,7 +7,7 @@ Attribute | Plugin Link |
 JSON Schema Assertion | https://github.com/kde-intro/jmeter-json-schema-assertion-plugin |
 
 ## Installation of Plugin
-1. Copy the **Custom_JsonSchemaAssertion_component-0.4.jar** located at ./jmeter in assignment-qa project to your **JMeter** home directory/lib/ext/<br>
+1. Copy the **Custom_JsonSchemaAssertion_component-0.4.jar** located at ./jmeter in "assignment-qa" project to your **JMeter** home directory/lib/ext/<br>
 
 
 ---------------------------------------------------------------OR--------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ JSON Schema Assertion | https://github.com/kde-intro/jmeter-json-schema-assertio
 3. Put the generated jar file (Custom_JsonSchemaAssertion_component.jar) from _target_ folder to JMeter _JMeter home directory/lib/ext/_ directory.
 
 ****
-## Notes
+## Note
 ## <span style="color:red">****\# Detail documentation and analysis is availale in the "./docx" folder of the project for all assignments****<br></span>
 
 ## Assignment Project Installation
@@ -67,6 +67,37 @@ JSON Schema Assertion | https://github.com/kde-intro/jmeter-json-schema-assertio
     #### 1. Report of my assignment-5 can be found in the "./docx "directory
 ****
 ## Summary
+This project showcases capabilities in software quality assurance, encompassing web UI automation, API functional testing, and performance testing with application of Page Object Model and Data-Driven Testing, to ensure a highly organized and efficient testing process.The project attempts to validate software across functional, security, and performance perspective. Detailed insights are provided using ExtentReports and JMeter dashboards.
+
+Tools & Technologies: Selenium WebDriver, Java, TestNG, ExtentReports, SQLite Database.
+## Features
+#### Methodology & Design Principles
+    1. Page Object Model (POM)
+    2. Data-Driven Testing (DDT)
+    3. Negative & Edge Case Testing
+    4. Structured Test Case Management
+    5. Comprehensive Reporting
+
+#### Web UI Automation (Selenium & TestNG)
+
+    1. Complex Form Validation: Automated the testing of a multi-field form, validating browser-side and programmatic rules for required fields, data formats (mobile numbers), whitespace, and special characters.
+    2. UI-Based Security Checks: Proactively tested for common web vulnerabilities by injecting basic XSS payloads (<script>, <img onerror>) and SQL injection strings into form fields to verify input sanitization.
+    3. JavaScript Execution: Utilized a JavaScriptUtility to perform actions not easily handled by standard Selenium commands, including highlighting elements  and ensuring interaction with elements that require scrolling into view.
+    4. Framework Management: Use of utilities for configuration management (ConfigReader), cross-browser support (DriverFactory), and screenshot capture.
+ #### API & Performance Testing (JMeter)
+
+    End-to-End API Functional Testing: Tested the full lifecycle of API endpoints covering all CRUD operations (GET, POST, PUT, DELETE).
+
+    Authentication & Authorization: Implemented tests for token-based authentication, extracting a JWT token from a login endpoint and passing it as a bearer token in subsequent requests. Tested protected endpoints with and without a valid token.
+
+    Schema & Response Validation: Used JSON Schema Assertion to validate the structure of API responses and Response Assertions to verify status codes and body content.
+
+    Content-Type Handling: Verified API behavior with different Accept and Content-Type headers, including application/json and application/xml.
+
+    Performance Testing: Designed and executed a performance test by configuring a Thread Group with multiple users, a ramp-up period, and a loop count.
+
+    Dynamic Parameterization: Used Groovy scripting within JMeter to generate dynamic data (random delay value) for each reques
+
 ****
 ## Screenshots of my run of the project
 ### <span style="color:gold">**Assignment 1 login validation**<br></span>
