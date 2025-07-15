@@ -2,12 +2,7 @@ package com.saucedemo.pages;
 
 import com.base.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,18 +25,9 @@ public class LoginPage extends BasePage {
         click(loginButton);
     }
 
-    public boolean isLoginSuccessful(boolean slowLoading) {
+    public boolean isLoginSuccessful() {
         try {
-            By productsHeader = By.xpath("//div[@id='header_container']//span[text()='Products']");
-
-            Wait<WebDriver> wait = new FluentWait<>(driver)
-                    .withTimeout(Duration.ofSeconds(slowLoading?10:5))
-                    .pollingEvery(Duration.ofMillis(400))
-                    .ignoring(NoSuchElementException.class);
-
-            wait.until(driver -> driver.findElement(productsHeader).isDisplayed());
-
-            return true;
+            return driver.getCurrentUrl().contains("inventory");
         } catch (Exception e) {
             return false;
         }

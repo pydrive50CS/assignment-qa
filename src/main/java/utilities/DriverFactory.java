@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
 
     public static WebDriver createDriver(String browser) {
-        if (browser == null) browser = "chrome"; // Default to Chrome
+        if (browser == null) browser = "firefox"; // Default to Chrome
 
         switch (browser.toLowerCase()) {
             case "chrome":

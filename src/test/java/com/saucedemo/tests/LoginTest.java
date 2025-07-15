@@ -69,7 +69,8 @@ public class LoginTest extends BaseTest {
             test.info("Clicking Login button");
             loginPage.clickLoginButton();
 
-            boolean actualResult = (username.equals("performance_glitch_user"))?loginPage.isLoginSuccessful(true): loginPage.isLoginSuccessful(false);
+            boolean actualResult = loginPage.isLoginSuccessful();
+//            boolean actualResult = (username.equals("performance_glitch_user"))?loginPage.isLoginSuccessful(true): loginPage.isLoginSuccessful(false);
             test.info("Expected result: " + expectedResult);
             test.info("Actual result: " + actualResult);
 
