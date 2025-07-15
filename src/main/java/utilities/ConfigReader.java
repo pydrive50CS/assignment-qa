@@ -18,7 +18,6 @@ public class ConfigReader {
         }
     }
 
-    // Reads from system property first, then config file
     public static String get(String key) {
         return System.getProperty(key, props.getProperty(key));
     }

@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-import static java.lang.Thread.sleep;
-
 public class JavaScriptUtility extends Utilities {
 
     public static void scrollToElementJS(By locator) {

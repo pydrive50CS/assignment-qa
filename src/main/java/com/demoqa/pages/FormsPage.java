@@ -44,7 +44,7 @@ public class FormsPage extends BasePage {
         scrollToElementJS(locator);
     }
 
-    // --- Validation methods ---
+    //Validation methods
 
     public String getValidationMessage(String fieldName) {
         By locator = getLocatorByFieldName(fieldName);

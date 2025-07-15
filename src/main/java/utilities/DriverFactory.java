@@ -14,7 +14,6 @@ public class DriverFactory {
             case "chrome":
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
-                // Uncomment for headless: options.addArguments("--headless");
                 return new ChromeDriver(options);
 
             case "firefox":

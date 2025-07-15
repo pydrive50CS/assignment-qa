@@ -8,8 +8,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static utilities.JavaScriptUtility.highlightElement;
-
 public class ScreenshotUtility extends Utilities {
 
     public String captureScreenshot(String testName) {
@@ -29,7 +27,6 @@ public class ScreenshotUtility extends Utilities {
             File dest = new File(screenshotDir + screenshotFile);
             FileUtils.copyFile(src, dest);
 
-            // Path returned should be relative to where ExtentReport is generated (usually /reports/)
             return "../screenshots/" + screenshotFile;
 
 

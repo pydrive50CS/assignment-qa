@@ -5,20 +5,15 @@ import com.saucedemo.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import utilities.ConfigReader;
 import utilities.DriverFactory;
 import utilities.ExtentReportManager;
 import utilities.ReportDirectoryUtility;
 
-import java.io.InputStream;
-import java.lang.reflect.Method;
-
 import static utilities.Utilities.setUtilityDriver;
 
 public class BaseTest {
     String browser = ConfigReader.get("browser");
-    String url = "";
     protected LoginPage loginPage;
     protected WebDriver driver;
     protected BasePage basePage;
@@ -30,7 +25,6 @@ public class BaseTest {
         ExtentReportManager.initReports(titles[0], titles[1], titles[2]);
         driver = DriverFactory.createDriver(browser);
         driver.manage().window().maximize();
-//        driver.get(url);
         basePage = new BasePage();
         basePage.setDriver(driver);
         setUtilityDriver();
@@ -38,10 +32,6 @@ public class BaseTest {
         formsPage = new FormsPage();
     }
 
-   @BeforeMethod
-   public void beforeMethod(Method method) {
-//       ExtentReportManager.createTest(method.getName());
-   }
     @AfterClass
     public void tearDown() {
         driver.quit();

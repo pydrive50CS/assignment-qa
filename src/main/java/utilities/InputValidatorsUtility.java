@@ -32,7 +32,7 @@ public class InputValidatorsUtility {
         return input.matches("^[0-9]{10}$");
     }
 
-    // === Combined Validations ===
+    //Combined validation methods
 
     public static ValidationResult validateSanitization(String fieldLabel, String input, int maxLength) {
         ValidationResult result = new ValidationResult();
