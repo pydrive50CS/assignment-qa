@@ -1,10 +1,13 @@
 # Assignment Task for QA Automation Engineer
 
-### Dependencies Required
+### Dependencies/Tools Required
 
 Attribute | Plugin Link |
 ------------ | ------------- |
 JSON Schema Assertion | https://github.com/kde-intro/jmeter-json-schema-assertion-plugin |
+Apache Jmeter | https://jmeter.apache.org/download_jmeter.cgi |
+maven |https://maven.apache.org/install.html
+sqlite | https://sqlite.org/download.html
 
 ## Installation of Plugin
 1. Copy the **Custom_JsonSchemaAssertion_component-0.4.jar** located at ./jmeter in "assignment-qa" project to your **JMeter** home directory/lib/ext/<br>
@@ -22,6 +25,9 @@ JSON Schema Assertion | https://github.com/kde-intro/jmeter-json-schema-assertio
 
 ## Assignment Project Installation
 1. Clone the repo:: https://github.com/pydrive50CS/assignment-qa
+    ### ***Note:  If there is no database or you want to make modifications on the database for testcases then use the following command:***<br>
+
+    #### "sqlite3 ./database/testdb.sqlite < ./database/your_database_init.sqlite"
 
     ## 1.Run Selenium Tests
     ### <span style="color:green">**Assignment 1**<br></span>
