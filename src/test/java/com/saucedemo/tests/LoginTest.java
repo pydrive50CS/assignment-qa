@@ -3,6 +3,9 @@ package com.saucedemo.tests;
 import annotations.TestModule;
 import com.aventstack.extentreports.ExtentTest;
 import com.base.BaseTest;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -11,6 +14,7 @@ import utilities.DBUtility;
 import utilities.ExtentReportManager;
 import utilities.ScreenshotUtility;
 
+import java.time.Duration;
 import java.util.List;
 
 import static utilities.EscapeHTMLUtility.escapeHtml;
@@ -63,6 +67,10 @@ public class LoginTest extends BaseTest {
             test.info("Clicking Login button");
             loginPage.clickLoginButton();
 
+            if(expectedResult){
+                WebDriverWait wait =  new WebDriverWait(driver, Duration.ofSeconds(10));
+                wait.until(ExpectedConditions.urlContains("inventory"));
+            }
             boolean actualResult = loginPage.isLoginSuccessful();
             test.info("Expected result: " + expectedResult);
             test.info("Actual result: " + actualResult);
