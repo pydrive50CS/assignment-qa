@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VideoGame",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 2
+    },
+    "releaseDate": {
+      "type": "string"
+    },
+    "reviewScore": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "string"
+    }
+  },
+  "required": ["id", "name", "releaseDate", "reviewScore", "category", "rating"]
+}

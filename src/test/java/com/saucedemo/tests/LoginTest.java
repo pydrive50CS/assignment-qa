@@ -14,6 +14,8 @@ import utilities.ScreenshotUtility;
 
 import java.util.List;
 
+import static utilities.EscapeHTMLUtility.escapeHtml;
+
 @TestModule("Login")
 public class LoginTest extends BaseTest {
     ScreenshotUtility screenshotUtility = new ScreenshotUtility();
@@ -46,7 +48,7 @@ public class LoginTest extends BaseTest {
             driver.get(url);
 
             if (testCaseName.contains("XSS")) {
-                test.info("Entering username: '" + StringEscapeUtils.escapeHtml4(username) + "'");
+                test.info("Entering username: '" + escapeHtml(username) + "'");
             } else {
                 test.info("Entering username: '" + username + "'");
             }
