@@ -32,10 +32,9 @@ public class LoginTest extends BaseTest {
     @DataProvider(name = "loginDataFromDB")
     public Object[][] loginDataFromDB() throws Exception {
         try {
-            List<Object[]> dataList = DBUtility.getRequiredFieldTestData();
+            List<Object[]> dataList = DBUtility.getLoginData();
             return dataList.toArray(new Object[0][]);
         } catch (Exception e) {
-            // Log or print for debug if needed
             System.err.println("Error fetching login data from DB: " + e.getMessage());
             throw new Exception("Failed to fetch login test data from DB", e); // rethrow with context
         }

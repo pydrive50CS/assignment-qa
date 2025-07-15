@@ -67,7 +67,6 @@ public class FormsValidationTest extends BaseTest {
             List<Object[]> dataList = DBUtility.getRequiredFieldTestData();
             return dataList.toArray(new Object[0][]);
         } catch (Exception e) {
-            // Log or print for debug if needed
             System.err.println("Error fetching login data from DB: " + e.getMessage());
             throw new Exception("Failed to fetch login test data from DB", e); // rethrow with context
         }
