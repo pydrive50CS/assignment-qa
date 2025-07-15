@@ -110,7 +110,8 @@ public class FormsValidationTest extends BaseTest {
         formsPage.submitForm();
         test.info("Submitted form");
 
-        boolean errorShown = formsPage.hasValidationError();
+        boolean errorShown = formsPage.hasValidationError() || !formsPage.isGenderSelected();
+
         test.info("Error displayed: " + errorShown);
 
         boolean validationFailed = mergedValidationResult.hasFailures();

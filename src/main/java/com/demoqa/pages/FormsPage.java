@@ -11,6 +11,9 @@ public class FormsPage extends BasePage {
     private By firstName = By.id("firstName");
     private By lastName = By.id("lastName");
     private By maleRadioButton = By.id("gender-radio-1");
+    private By femaleRadioButton = By.id("gender-radio-2");
+    private By otherRadioButton = By.id("gender-radio-3");
+
     private By mobile = By.id("userNumber");
     private By submitButton = By.id("submit");
 
@@ -76,6 +79,10 @@ public class FormsPage extends BasePage {
                 || !getMobileValidationMessage().isEmpty()
                 || !getLastNameValidationMessage().isEmpty()
                 || !isMobileFieldValid();
+    }
+
+    public boolean isGenderSelected() {
+        return find(maleRadioButton).isSelected() || find(femaleRadioButton).isSelected() || find(otherRadioButton).isSelected();
     }
 
     public By getLocatorByFieldName(String fieldName) {

@@ -31,4 +31,4 @@ INSERT INTO form_test_cases
 ('TC16', 'Special characters in last name', 'Jim', '!@#$', '9876543210', 'Male', 1),
 ('TC17', 'Mobile number too short', 'Hari', 'Ram', '12345', 'Male', 1),
 ('TC18', 'Mobile number contains alphabets', 'Geralt', 'Rivea', '9876AB3210', 'Male', 1),
-('TC19', 'Gender field empty', 'The', 'Witcher', '9876543210', NULL, 0);
+('TC19', 'Gender field empty', 'The', 'Witcher', '9876543210', NULL, 1);

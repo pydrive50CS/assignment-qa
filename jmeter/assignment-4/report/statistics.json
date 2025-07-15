@@ -1,0 +1,34 @@
+{
+  "Random Delay API" : {
+    "transaction" : "Random Delay API",
+    "sampleCount" : 100,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 7174.9800000000005,
+    "medianResTime" : 6636.5,
+    "minResTime" : 1817.0,
+    "maxResTime" : 12985.0,
+    "pct1ResTime" : 11261.0,
+    "pct2ResTime" : 12212.05,
+    "pct3ResTime" : 12981.869999999999,
+    "throughput" : 2.6778063410454154,
+    "receivedKBytesPerSec" : 1.4072343030339545,
+    "sentKBytesPerSec" : 0.31414538647440016
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 100,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 7174.9800000000005,
+    "medianResTime" : 6636.5,
+    "minResTime" : 1817.0,
+    "maxResTime" : 12985.0,
+    "pct1ResTime" : 11261.0,
+    "pct2ResTime" : 12212.05,
+    "pct3ResTime" : 12981.869999999999,
+    "throughput" : 2.6778063410454154,
+    "receivedKBytesPerSec" : 1.4072343030339545,
+    "sentKBytesPerSec" : 0.31414538647440016
+  }
+}
