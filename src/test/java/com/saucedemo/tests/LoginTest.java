@@ -3,8 +3,6 @@ package com.saucedemo.tests;
 import annotations.TestModule;
 import com.aventstack.extentreports.ExtentTest;
 import com.base.BaseTest;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -13,7 +11,6 @@ import utilities.DBUtility;
 import utilities.ExtentReportManager;
 import utilities.ScreenshotUtility;
 
-import java.time.Duration;
 import java.util.List;
 
 import static utilities.EscapeHTMLUtility.escapeHtml;
@@ -34,9 +31,16 @@ public class LoginTest extends BaseTest {
 
     @DataProvider(name = "loginDataFromDB")
     public Object[][] loginDataFromDB() throws Exception {
-        List<Object[]> dataList = DBUtility.getLoginData();
-        return dataList.toArray(new Object[0][]);
+        try {
+            List<Object[]> dataList = DBUtility.getRequiredFieldTestData();
+            return dataList.toArray(new Object[0][]);
+        } catch (Exception e) {
+            // Log or print for debug if needed
+            System.err.println("Error fetching login data from DB: " + e.getMessage());
+            throw new Exception("Failed to fetch login test data from DB", e); // rethrow with context
+        }
     }
+
 
     @Test(dataProvider = "loginDataFromDB")
     public void testLoginFunction(String testCaseCode, String testCaseName, String username, String password, boolean expectedResult) {
@@ -66,11 +70,7 @@ public class LoginTest extends BaseTest {
             test.info("Clicking Login button");
             loginPage.clickLoginButton();
 
-            if(expectedResult){
-                WebDriverWait wait =  new WebDriverWait(driver, Duration.ofSeconds(10));
-                wait.until(ExpectedConditions.urlContains("inventory"));
-            }
-            boolean actualResult = loginPage.isLoginSuccessful();
+            boolean actualResult = (username.equals("performance_glitch_user"))?loginPage.isLoginSuccessful(true): loginPage.isLoginSuccessful(false);
             test.info("Expected result: " + expectedResult);
             test.info("Actual result: " + actualResult);
 
